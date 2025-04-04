@@ -160,9 +160,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# GitHub Utilities
-.github/
-
 # PyCharm
 .idea/
 
