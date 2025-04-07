@@ -1,7 +1,7 @@
 ## should go in src/pipeline
-from testSummarizer.config.configuration import ConfigurationManager
-from testSummarizer.components.data_ingestion import DataIngestion
-from testSummarizer.logging import logger
+from model.config.configuration import ConfigurationManager
+from model.components.data_ingestion import DataIngestion
+from model.logging import logger
 
 class DataIngestionTrainingPipeline:
     def __init__(self):
