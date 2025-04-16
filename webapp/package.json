@@ -1,0 +1,12 @@
+{
+    "name": "nlp-summary-translation",
+    "private": true,
+    "scripts": {
+        "dev:frontend": "npm --prefix ./frontend run dev",
+        "dev:backend": "npm --prefix backend run start:dev",
+        "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
