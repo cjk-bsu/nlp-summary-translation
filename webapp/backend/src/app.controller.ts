@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('api/summary')
+  getSummary(): any {
+    return {
+      title: 'This is a test summary',
+      summary: 'We’re just checking if everything works!',
+    };
   }
 }
