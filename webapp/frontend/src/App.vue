@@ -1,30 +1,35 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <h1>NLP Research Translator</h1>
+    <button @click="getSummary">Fetch Test Summary</button>
+    <div v-if="summary">
+      <h2>{{ summary.title }}</h2>
+      <p>{{ summary.summary }}</p>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const summary = ref<{ title: string; summary: string } | null>(null)
+
+async function getSummary() {
+  try {
+    const res = await fetch('/api/summary')
+    if (!res.ok) throw new Error('Request failed')
+    summary.value = await res.json()
+  } catch (err) {
+    console.error('Error fetching summary:', err)
+  }
+}
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+#app {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding-top: 3rem;
 }
 </style>
