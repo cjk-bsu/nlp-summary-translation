@@ -60,6 +60,14 @@ jobs:
           echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME }}" >> .env.aws
           echo "SERVICE_NAME=${{ secrets.SERVICE_NAME }}" >> .env.aws
 
+      - name: Verify .env.aws file
+        run: |
+          if [ ! -s .env.aws ]; then
+            echo "[ERROR] .env.aws is missing or empty."
+            exit 1
+          fi
+          cat .env.aws
+
       - name: Checkout code
         uses: actions/checkout@v4
 
