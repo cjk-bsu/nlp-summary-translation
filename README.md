@@ -22,9 +22,9 @@ npm run dev
 #### To run manual deployment of web app to AWS run the following commands:
 
 ```
-# Deploy frontend to dev
-bash scripts/deploy/deploy_frontend.sh dev
+# Deploy frontend to AWS
+bash scripts/deploy/deploy_frontend.sh prod
 
-# Deploy backend to prod
+# Deploy backend to AWS
 bash scripts/deploy/deploy_backend.sh prod
 ```
