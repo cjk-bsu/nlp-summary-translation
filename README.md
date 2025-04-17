@@ -3,6 +3,12 @@
 
 ## Webapp 
 
+![CI](https://github.com/cjk-bsu/nlp-summary-translation/actions/workflows/ci.yml/badge.svg?branch=main)
+
+
+![Deploy to AWS](https://github.com/cjk-bsu/nlp-summary-translation/actions/workflows/deploy.yml/badge.svg?branch=main)
+
+
 #### To open local developer view in browser window:
 
 ```
