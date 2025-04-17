@@ -62,7 +62,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Deploy Frontend
-        run: bash scripts/deploy/deploy_webapp.sh aws
-
+        run: bash scripts/deploy/deploy_frontend.sh aws
+        
       - name: Deploy Backend
         run: bash scripts/deploy/deploy_backend.sh aws
