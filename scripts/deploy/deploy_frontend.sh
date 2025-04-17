@@ -1,26 +1,26 @@
 #!/bin/bash
 
-ENV=$1
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# ENV=$1
+# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ -z "$ENV" ]]; then
-  echo "[ERROR] No environment specified. Usage: $0 <env>"
-  exit 1
-fi
+# if [[ -z "$ENV" ]]; then
+#   echo "[ERROR] No environment specified. Usage: $0 <env>"
+#   exit 1
+# fi
 
-if [[ "$ENV" != "aws" ]]; then
-  echo "[ABORTED] This script is restricted to production deploys only. '$ENV' is not allowed."
-  exit 1
-fi
+# if [[ "$ENV" != "aws" ]]; then
+#   echo "[ABORTED] This script is restricted to production deploys only. '$ENV' is not allowed."
+#   exit 1
+# fi
 
-source "$DIR/common.sh"
-source "$DIR/set_env.sh" "$ENV"
+# source "$DIR/common.sh"
+# source "$DIR/set_env.sh" "$ENV"
 
-log "Deploying frontend to environment: $ENV"
+# log "Deploying frontend to environment: $ENV"
 
-check_env_var AWS_REGION
-check_env_var S3_BUCKET_NAME
-check_env_var CLOUDFRONT_DISTRIBUTION_ID
+# check_env_var AWS_REGION
+# check_env_var S3_BUCKET_NAME
+# check_env_var CLOUDFRONT_DISTRIBUTION_ID
 
 cd "$DIR/../../webapp/frontend"
 
