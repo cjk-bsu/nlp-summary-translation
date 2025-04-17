@@ -1,28 +1,28 @@
 #!/bin/bash
 
-ENV=$1
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# ENV=$1
+# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ -z "$ENV" ]]; then
-  echo "[ERROR] No environment specified. Usage: $0 <env>"
-  exit 1
-fi
+# if [[ -z "$ENV" ]]; then
+#   echo "[ERROR] No environment specified. Usage: $0 <env>"
+#   exit 1
+# fi
 
-if [[ "$ENV" != "aws" ]]; then
-  echo "[ABORTED] This script is restricted to production deploys only. '$ENV' is not allowed."
-  exit 1
-fi
+# if [[ "$ENV" != "aws" ]]; then
+#   echo "[ABORTED] This script is restricted to production deploys only. '$ENV' is not allowed."
+#   exit 1
+# fi
 
-source "$DIR/common.sh"
-source "$DIR/set_env.sh" "$ENV"
+# source "$DIR/common.sh"
+# source "$DIR/set_env.sh" "$ENV"
 
-log "Deploying backend to environment: $ENV"
+# log "Deploying backend to environment: $ENV"
 
-check_env_var AWS_REGION
-check_env_var AWS_ACCOUNT_ID
-check_env_var BACKEND_ECR_REPO_NAME
-check_env_var CLUSTER_NAME
-check_env_var SERVICE_NAME
+# check_env_var AWS_REGION
+# check_env_var AWS_ACCOUNT_ID
+# check_env_var BACKEND_ECR_REPO_NAME
+# check_env_var CLUSTER_NAME
+# check_env_var SERVICE_NAME
 
 cd "$DIR/../../webapp/backend"
 

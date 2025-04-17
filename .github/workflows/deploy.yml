@@ -4,12 +4,48 @@ on:
   push:
     branches: [main]
 
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     environment:
+#       name: aws
+#       url: https://your-production-site.com  # Optional
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Set up AWS CLI
+#         uses: aws-actions/configure-aws-credentials@v4
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: ${{ secrets.AWS_REGION }}
+
+#       - name: Set up Docker
+#         uses: docker/setup-buildx-action@v3
+
+#       - name: Deploy Frontend
+#         run: bash scripts/deploy/deploy_frontend.sh aws
+
+#       - name: Deploy Backend
+#         run: bash scripts/deploy/deploy_backend.sh aws
+
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: aws
-      url: https://your-production-site.com  # Optional
+    environment: aws
+
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      BACKEND_ECR_REPO_NAME: ${{ secrets.BACKEND_ECR_REPO_NAME }}
+      CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
+      SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
 
     steps:
       - name: Checkout code
@@ -18,15 +54,15 @@ jobs:
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: AWS_REGION
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
       - name: Deploy Frontend
         run: bash scripts/deploy/deploy_frontend.sh aws
-
+        
       - name: Deploy Backend
         run: bash scripts/deploy/deploy_backend.sh aws
