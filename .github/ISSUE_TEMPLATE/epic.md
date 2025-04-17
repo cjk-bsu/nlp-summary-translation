@@ -1,7 +1,7 @@
 ---
 name: Epic
 about: General category of product functionality
-title: "[EPIC] "
+title: "epic: "
 labels: epic
 assignees: ''
 
