@@ -23,8 +23,8 @@ npm run dev
 
 ```
 # Deploy frontend to AWS
-bash scripts/deploy/deploy_frontend.sh prod
+bash scripts/deploy/deploy_frontend.sh aws
 
 # Deploy backend to AWS
-bash scripts/deploy/deploy_backend.sh prod
+bash scripts/deploy/deploy_backend.sh aws
 ```
